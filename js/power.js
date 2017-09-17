@@ -1,59 +1,22 @@
 $(document).ready(function() {
 
-  //Set variables for use
+    //Set variables for use
 
-  var weight = 0;
-  var fiveSecPower = 0;
-  var sixtySecPower = 0;
-  var fiveMinPower = 0;
-  var sixtyMinPower = 0;
-  var gender = "";
-  var fiveSecRatio = 0;
-  var sixtySecRatio = 0;
-  var fiveMinRatio = 0;
-  var sixtyMinRatio = 0;
-  var highlight;
+    var weight = 0;
+    var fiveSecPower = 0;
+    var sixtySecPower = 0;
+    var fiveMinPower = 0;
+    var sixtyMinPower = 0;
+    var gender = "";
+    var fiveSecRatio = 0;
+    var sixtySecRatio = 0;
+    var fiveMinRatio = 0;
+    var sixtyMinRatio = 0;
+    var highlight;
 
-  //Declaring a function for clearing then highlighting the relevant cells as we iterate over the table values.
+    //Five seconds for men
 
-  function clearThenHighlight(ratioClass, ratioID) {
-    $(ratioClass).removeClass('greenBg');
-    $(ratioID + highlight).addClass('greenBg');
-  }
-
-  //On submitting the form, variables set to the correct ratio
-
-  $("#results").hide();
-  $("#submitInfo").submit(function() {
-    weight = parseInt($("#weight").val());
-    gender = $('input[name="genderS"]:checked').val();
-    fiveSecPower = parseInt($("#fiveSecPower").val());
-    sixtySecPower = parseInt($("#sixtySecPower").val());
-    fiveMinPower = parseInt($("#fiveMinPower").val());
-    sixtyMinPower = parseInt($("#sixtyMinPower").val());
-
-    //Set power ratios
-
-    fiveSecRatio = (fiveSecPower / weight).toFixed(2);
-    sixtySecRatio = (sixtySecPower / weight).toFixed(2);
-    fiveMinRatio = (fiveMinPower / weight).toFixed(2);
-    sixtyMinRatio = (sixtyMinPower / weight).toFixed(2);
-
-    //Clear previous highlights every time we click submit again
-
-    $(".male-5s, .male-60s, .male-5m, .male-60m, .female-5s, .female-60s, .female-5m, .female-60m").removeClass('greenBg');
-
-    //Only run the function if all data fields completed, else return alert
-
-    if (fiveSecRatio === "NaN" || sixtySecRatio === "NaN" || fiveMinRatio === "NaN" || sixtyMinRatio === "NaN") {
-      alert("You must enter all of your information to continue.");
-    } else {
-
-      // Change relevant cell background colors
-
-      //Five seconds for men
-
-      var maleFiveSecondArray = [
+    var maleFiveSecondArray = [
         [39, 13.71],
         [38, 13.98],
         [37, 14.25],
@@ -93,20 +56,20 @@ $(document).ready(function() {
         [3, 23.5],
         [2, 23.77],
         [1, 24.04]
-      ];
+    ];
 
-      function changeMaleFiveSeconds() {
+    function changeMaleFiveSeconds() {
         for (var i = 0; i < maleFiveSecondArray.length; i++) {
-          if (maleFiveSecondArray[i][1] <= fiveSecRatio) {
-            highlight = maleFiveSecondArray[i][0];
-            clearThenHighlight(".male-5s", "#male-5s-");
-          }
+            if (maleFiveSecondArray[i][1] <= fiveSecRatio) {
+                highlight = maleFiveSecondArray[i][0];
+                clearThenHighlight(".male-5s", "#male-5s-");
+            }
         }
-      }
+    }
 
-      //Sixty seconds for men
+    //Sixty seconds for men
 
-      var maleSixtySecondArray = [
+    var maleSixtySecondArray = [
         [39, 7.13],
         [38, 7.25],
         [37, 7.36],
@@ -146,20 +109,20 @@ $(document).ready(function() {
         [3, 11.27],
         [2, 11.39],
         [1, 11.50]
-      ];
+    ];
 
-      function changeMaleSixtySeconds() {
+    function changeMaleSixtySeconds() {
         for (var i = 0; i < maleSixtySecondArray.length; i++) {
-          if (maleSixtySecondArray[i][1] <= sixtySecRatio) {
-            highlight = maleSixtySecondArray[i][0];
-            clearThenHighlight(".male-60s", "#male-60s-");
-          }
+            if (maleSixtySecondArray[i][1] <= sixtySecRatio) {
+                highlight = maleSixtySecondArray[i][0];
+                clearThenHighlight(".male-60s", "#male-60s-");
+            }
         }
-      }
+    }
 
-      //Five mins for me
+    //Five mins for me
 
-      var maleFiveMinutesArray = [
+    var maleFiveMinutesArray = [
         [39, 3.67],
         [38, 3.77],
         [37, 3.88],
@@ -199,20 +162,20 @@ $(document).ready(function() {
         [3, 7.39],
         [2, 7.50],
         [1, 7.60]
-      ];
+    ];
 
-      function changeMaleFiveMinutes() {
+    function changeMaleFiveMinutes() {
         for (var i = 0; i < maleFiveMinutesArray.length; i++) {
-          if (maleFiveMinutesArray[i][1] <= fiveMinRatio) {
-            highlight = maleFiveMinutesArray[i][0];
-            clearThenHighlight(".male-5m", "#male-5m-");
-          }
+            if (maleFiveMinutesArray[i][1] <= fiveMinRatio) {
+                highlight = maleFiveMinutesArray[i][0];
+                clearThenHighlight(".male-5m", "#male-5m-");
+            }
         }
-      }
+    }
 
-      //Sixty mins for men
+    //Sixty mins for men
 
-      var maleSixtyMinutesArray = [
+    var maleSixtyMinutesArray = [
         [39, 3.02],
         [38, 3.11],
         [37, 3.20],
@@ -252,22 +215,22 @@ $(document).ready(function() {
         [3, 6.22],
         [2, 6.31],
         [1, 6.40],
-      ];
+    ];
 
-      function changeMaleSixtyMinutes() {
+    function changeMaleSixtyMinutes() {
         for (var i = 0; i < maleSixtyMinutesArray.length; i++) {
-          if (maleSixtyMinutesArray[i][1] <= sixtyMinRatio) {
-            highlight = maleSixtyMinutesArray[i][0];
-            clearThenHighlight(".male-60m", "#male-60m-");
-          }
+            if (maleSixtyMinutesArray[i][1] <= sixtyMinRatio) {
+                highlight = maleSixtyMinutesArray[i][0];
+                clearThenHighlight(".male-60m", "#male-60m-");
+            }
         }
-      }
+    }
 
-      //For women
+    //For women
 
-      //Five secs for women
+    //Five secs for women
 
-      var femaleFiveSecondArray = [
+    var femaleFiveSecondArray = [
         [39, 11.23],
         [38, 11.45],
         [37, 11.66],
@@ -307,20 +270,20 @@ $(document).ready(function() {
         [3, 18.99],
         [2, 19.20],
         [1, 19.42],
-      ];
+    ];
 
-      function changeFemaleFiveSeconds() {
+    function changeFemaleFiveSeconds() {
         for (var i = 0; i < femaleFiveSecondArray.length; i++) {
-          if (femaleFiveSecondArray[i][1] <= fiveSecRatio) {
-            highlight = femaleFiveSecondArray[i][0];
-            clearThenHighlight(".female-5s", "#female-5s-");
-          }
+            if (femaleFiveSecondArray[i][1] <= fiveSecRatio) {
+                highlight = femaleFiveSecondArray[i][0];
+                clearThenHighlight(".female-5s", "#female-5s-");
+            }
         }
-      }
+    }
 
-      //Sixty secs for women
+    //Sixty secs for women
 
-      var femaleSixtySecondArray = [
+    var femaleSixtySecondArray = [
         [39, 5.66],
         [38, 5.76],
         [37, 5.85],
@@ -360,20 +323,20 @@ $(document).ready(function() {
         [3, 9.11],
         [2, 9.20],
         [1, 9.29],
-      ];
+    ];
 
-      function changeFemaleSixtySeconds() {
+    function changeFemaleSixtySeconds() {
         for (var i = 0; i < femaleSixtySecondArray.length; i++) {
-          if (femaleSixtySecondArray[i][1] <= sixtySecRatio) {
-            highlight = femaleSixtySecondArray[i][0];
-            clearThenHighlight(".female-60s", "#female-60s-");
-          }
+            if (femaleSixtySecondArray[i][1] <= sixtySecRatio) {
+                highlight = femaleSixtySecondArray[i][0];
+                clearThenHighlight(".female-60s", "#female-60s-");
+            }
         }
-      }
+    }
 
-      //Five mins for women
+    //Five mins for women
 
-      var femaleFiveMinutesArray = [
+    var femaleFiveMinutesArray = [
         [39, 3.09],
         [38, 3.19],
         [37, 3.28],
@@ -413,20 +376,20 @@ $(document).ready(function() {
         [3, 6.42],
         [2, 6.52],
         [1, 6.61],
-      ];
+    ];
 
-      function changeFemaleFiveMinutes() {
+    function changeFemaleFiveMinutes() {
         for (var i = 0; i < femaleFiveMinutesArray.length; i++) {
-          if (femaleFiveMinutesArray[i][1] <= fiveMinRatio) {
-            highlight = femaleFiveMinutesArray[i][0];
-            clearThenHighlight(".female-5m", "#female-5m-");
-          }
+            if (femaleFiveMinutesArray[i][1] <= fiveMinRatio) {
+                highlight = femaleFiveMinutesArray[i][0];
+                clearThenHighlight(".female-5m", "#female-5m-");
+            }
         }
-      }
+    }
 
-      //Sixty mins for women
+    //Sixty mins for women
 
-      var femaleSixtyMinutesArray = [
+    var femaleSixtyMinutesArray = [
         [39, 2.57],
         [38, 2.65],
         [37, 2.73],
@@ -466,42 +429,78 @@ $(document).ready(function() {
         [3, 5.53],
         [2, 5.61],
         [1, 5.69],
-      ];
+    ];
 
-      function changeFemaleSixtyMinutes() {
+    function changeFemaleSixtyMinutes() {
         for (var i = 0; i < femaleSixtyMinutesArray.length; i++) {
-          if (femaleSixtyMinutesArray[i][1] <= sixtyMinRatio) {
-            highlight = femaleSixtyMinutesArray[i][0];
-            clearThenHighlight(".female-60m", "#female-60m-");
-          }
+            if (femaleSixtyMinutesArray[i][1] <= sixtyMinRatio) {
+                highlight = femaleSixtyMinutesArray[i][0];
+                clearThenHighlight(".female-60m", "#female-60m-");
+            }
         }
-      }
-
-      function run() {
-        $("#results").show();
-        if (gender === "Female") {
-          changeFemaleFiveSeconds();
-          changeFemaleSixtySeconds();
-          changeFemaleFiveMinutes();
-          changeFemaleSixtyMinutes();
-        } else if (gender === "Male") {
-          changeMaleFiveSeconds();
-          changeMaleSixtySeconds();
-          changeMaleFiveMinutes();
-          changeMaleSixtyMinutes();
-        }
-      }
-
-      run();
-
-      //display power ratios
-
-      $("#fiveSecRatio").html("<b>5 Second Power Ratio:</b> <br>" + fiveSecRatio + " w/kg");
-      $("#sixtySecRatio").html("<b>60 Second Power Ratio:</b> <br>" + sixtySecRatio + " w/kg");
-      $("#fiveMinRatio").html("<b>5 Minute Power Ratio:</b> <br>" + fiveMinRatio + " w/kg");
-      $("#sixtyMinRatio").html("<b>60 Minute Power Ratio:</b> <br>" + sixtyMinRatio + " w/kg");
-      return false;
-
     }
-  });
+
+    //Declaring a function for clearing then highlighting the relevant cells as we iterate over the table values.
+
+    function clearThenHighlight(ratioClass, ratioID) {
+        $(ratioClass).removeClass('greenBg');
+        $(ratioID + highlight).addClass('greenBg');
+    }
+
+    // Change relevant cell background colors
+    function run() {
+        $("#results").show();
+        console.log(gender);
+        if (gender === "Female") {
+            changeFemaleFiveSeconds();
+            changeFemaleSixtySeconds();
+            changeFemaleFiveMinutes();
+            changeFemaleSixtyMinutes();
+        } else if (gender === "Male") {
+            changeMaleFiveSeconds();
+            changeMaleSixtySeconds();
+            changeMaleFiveMinutes();
+            changeMaleSixtyMinutes();
+        }
+    }
+
+    //On submitting the form, variables set to the correct ratio
+    $("#results").hide();
+    $("#submitInfo").submit(function() {
+        weight = parseInt($("#weight").val());
+        gender = $('input[name="gender"]:checked').val();
+        fiveSecPower = parseInt($("#fiveSecPower").val());
+        sixtySecPower = parseInt($("#sixtySecPower").val());
+        fiveMinPower = parseInt($("#fiveMinPower").val());
+        sixtyMinPower = parseInt($("#sixtyMinPower").val());
+
+        //Set power ratios
+
+        fiveSecRatio = (fiveSecPower / weight).toFixed(2);
+        sixtySecRatio = (sixtySecPower / weight).toFixed(2);
+        fiveMinRatio = (fiveMinPower / weight).toFixed(2);
+        sixtyMinRatio = (sixtyMinPower / weight).toFixed(2);
+
+        //Clear previous highlights every time we click submit again
+
+        $(".male-5s, .male-60s, .male-5m, .male-60m, .female-5s, .female-60s, .female-5m, .female-60m").removeClass('greenBg');
+
+        //Only run the function if all data fields completed, else return alert
+
+        if (fiveSecRatio === "NaN" || sixtySecRatio === "NaN" || fiveMinRatio === "NaN" || sixtyMinRatio === "NaN") {
+            alert("You must enter all of your information to continue.");
+        } else {
+
+            run();
+
+            //display power ratios
+
+            $("#fiveSecRatio").html("<b>5 Second Power Ratio:</b> <br>" + fiveSecRatio + " w/kg");
+            $("#sixtySecRatio").html("<b>60 Second Power Ratio:</b> <br>" + sixtySecRatio + " w/kg");
+            $("#fiveMinRatio").html("<b>5 Minute Power Ratio:</b> <br>" + fiveMinRatio + " w/kg");
+            $("#sixtyMinRatio").html("<b>60 Minute Power Ratio:</b> <br>" + sixtyMinRatio + " w/kg");
+            return false;
+
+        }
+    });
 });
