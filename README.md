@@ -1,4 +1,8 @@
-# The Project
+# Cycling Power Zone Calculator
+
+http://jamesriall.co.uk/cycling-power-zone-calculator/
+
+## The Project
 
 For keen racing cyclists, the golden standard of measuring fitness is power. Power is typically measured in the number of watts someone can produce over a given duration. Given that many races are decided on climbs, where gravity creates enormous resistance, the number of watts per kilogram of bodymass a great way of determining comparative fitness to other racers.
 
@@ -6,7 +10,9 @@ This tool allows users to enter their personal and training data - weight, gende
 
 More information on cycling power training can be found <a href="http://home.trainingpeaks.com/blog/article/power-training-levels">here</a>.
 
-# The Logic
+![ScreenShot](http://res.cloudinary.com/jamesriall/image/upload/v1469029676/power_oa7ojo.png)
+
+## The Logic
 
 Within the index file I created the input area for the user to enter their power numbers, gender and weight. I also created a table to display all of the numbers for each gender/race category (Emmet was an enormous time saver here to save my typing out every single cell by hand).
 
